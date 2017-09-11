@@ -23,5 +23,24 @@
             <dropTable tableName="prueba"/>
     </rollback>
     </changeSet>
+    
+    <changeSet id="create-table:jenkins" author="yosimar" >
+     <preConditions onFail="MARK_RAN">
+         <not>
+                <tableExists tableName="jenkins"/>
+            </not>
+    </preConditions>
+    <createTable tableName="jenkins">
+    <column autoIncrement="true" name="id" type="INT" >
+                <constraints primaryKey="true" nullable="false"/>
+    </column>
+    <column name="descripcion" type="VARCHAR(100)">
+    <constraints nullable="false"/>
+    </column>
+    </createTable>
+    <rollback>
+            <dropTable tableName="jenkins"/>
+    </rollback>
+    </changeSet>
 
 </databaseChangeLog>
